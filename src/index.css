@@ -1,0 +1,119 @@
+@layer theme, base, bootstrap, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "bootstrap/dist/css/bootstrap.min.css" layer(bootstrap);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "tw-animate-css";
+
+@theme inline {
+  --color-rosso: #dc0000;
+  --color-rosso-hi: #ff4a3d;
+  --color-giallo: #ffd800;
+  --color-carbon: #0c0c0d;
+  --color-asphalt: #151516;
+  --color-steel: #262628;
+  --color-ivory: #f4f2ee;
+  --color-bone: #ebe8e2;
+  --color-mute: #a6a6aa;
+  --font-display: var(--font-archivo), "Arial Narrow", sans-serif;
+  --font-body: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+:root {
+  --font-archivo: "Archivo Variable";
+  --font-geist-mono: "Geist Mono Variable";
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* React Bootstrap reads these: retheme it to the showroom */
+  --bs-body-bg: #0c0c0d;
+  --bs-body-color: #f4f2ee;
+  --bs-body-font-family: var(--font-archivo), system-ui, sans-serif;
+  --bs-border-color: rgba(255, 255, 255, 0.16);
+  --bs-primary: #dc0000;
+  --bs-primary-rgb: 220, 0, 0;
+  --bs-link-color: #ff4a3d;
+  --bs-link-hover-color: #ffffff;
+  --bs-border-radius: 0;
+  --bs-border-radius-sm: 0;
+  --bs-border-radius-lg: 0;
+}
+
+html {
+  background: var(--color-carbon);
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-carbon);
+  color: var(--color-ivory);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Browser surfaces carry the design */
+::selection { background: #dc0000; color: #fff; }
+:focus-visible { outline: 2px solid #ffd800; outline-offset: 3px; }
+a { text-underline-offset: 0.25em; text-decoration: none; }
+html { scrollbar-color: #dc0000 #0c0c0d; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0c0c0d; }
+::-webkit-scrollbar-thumb { background: #dc0000; }
+
+.display {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+.display-cond {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-stretch: 62%;
+  font-variation-settings: "wdth" 62;
+  letter-spacing: -0.01em;
+  line-height: 0.88;
+}
+.tnum { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Light showroom sections */
+.on-light { background: var(--color-bone); color: var(--color-carbon); }
+.on-light .text-mute { color: #4d4d50; }
+.on-rosso { background: var(--color-rosso); color: #fff; }
+
+/* Bootstrap component retheme (React Bootstrap parts used across the site) */
+.navbar { --bs-navbar-color: #f4f2ee; --bs-navbar-hover-color: #fff; --bs-navbar-active-color: #fff; }
+.nav-tabs { --bs-nav-tabs-link-active-bg: #dc0000; --bs-nav-tabs-link-active-color: #fff; --bs-nav-tabs-link-active-border-color: #dc0000; --bs-nav-tabs-border-color: rgba(255,255,255,.2); --bs-nav-link-color: #a6a6aa; --bs-nav-link-hover-color: #fff; }
+.nav-tabs .nav-link { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; border-radius: 0; padding: .9rem 1.4rem; }
+.accordion { --bs-accordion-bg: transparent; --bs-accordion-color: #f4f2ee; --bs-accordion-border-color: rgba(255,255,255,.18); --bs-accordion-btn-bg: transparent; --bs-accordion-btn-color: #f4f2ee; --bs-accordion-active-bg: #151516; --bs-accordion-active-color: #fff; --bs-accordion-btn-focus-box-shadow: none; --bs-accordion-border-radius: 0; --bs-accordion-inner-border-radius: 0; --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f4f2ee'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff4a3d'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); }
+.accordion-button { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; padding: 1.4rem 1.25rem; width: 100%; }
+.accordion-button::after { margin-left: auto; }
+.progress { --bs-progress-bg: #262628; --bs-progress-bar-bg: #dc0000; --bs-progress-height: .5rem; --bs-progress-border-radius: 0; }
+.form-control, .form-select { background: #151516; color: #f4f2ee; border: 1px solid rgba(255,255,255,.28); border-radius: 0; padding: .9rem 1rem; }
+.form-control:focus { background: #151516; color: #fff; border-color: #ffd800; box-shadow: none; }
+.form-control::placeholder { color: #8a8a8e; }
+.form-label { font-family: var(--font-display); font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+.form-control.is-invalid { border-color: #ff4a3d; background-image: none; }
+.invalid-feedback { color: #ff7a70; font-size: .9rem; }
+.modal-content { background: #151516; color: #f4f2ee; border: 1px solid rgba(255,255,255,.2); border-radius: 0; }
+.modal-header, .modal-footer { border-color: rgba(255,255,255,.14); }
+.btn-close { filter: invert(1); }
+.offcanvas { background: #0c0c0d; color: #f4f2ee; border-left: 1px solid rgba(255,255,255,.14); }
+.list-group { --bs-list-group-bg: transparent; --bs-list-group-color: #f4f2ee; --bs-list-group-border-color: rgba(255,255,255,.16); --bs-list-group-border-radius: 0; }
+.table { --bs-table-bg: transparent; --bs-table-color: #f4f2ee; --bs-table-border-color: rgba(255,255,255,.16); }
+.toast { background: #151516; color: #f4f2ee; border: 1px solid #ffd800; border-radius: 0; }
+.badge { border-radius: 0; font-family: var(--font-display); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+.carousel-indicators [data-bs-target], .carousel-indicators button { height: 3px; }
+.card { --bs-card-bg: #151516; --bs-card-border-color: rgba(255,255,255,.14); --bs-card-border-radius: 0; --bs-card-color: #f4f2ee; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Tailwind's `collapse` utility (visibility: collapse) shares a class name with Bootstrap's collapse and would hide open accordion panels */
+.collapse, .collapsing { visibility: visible; }
